@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Expense } from '../lib/types';
 import { INITIAL_EXPENSES } from '../lib/constants';
 
-const STORAGE_KEY = 'despesas-data';
+const STORAGE_KEY = 'despesas-data-v2';
 
 export const useExpenses = () => {
   const [expenses, setExpenses] = useState<Expense[]>(() => {
