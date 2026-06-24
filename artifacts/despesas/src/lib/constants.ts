@@ -7,6 +7,7 @@ export const CATEGORIAS: Categoria[] = [
   'Saúde',
   'Lazer',
   'Educação',
+  'Imóvel',
   'Outros',
 ];
 
