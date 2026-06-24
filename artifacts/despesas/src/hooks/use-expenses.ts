@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { Expense } from '../lib/types';
 import { INITIAL_EXPENSES } from '../lib/constants';
 
-const STORAGE_KEY = 'despesas-data-v2';
+const STORAGE_KEY = 'despesas-data-v3';
+const PREV_KEY = 'despesas-data-v2';
 
 export const useExpenses = () => {
   const [expenses, setExpenses] = useState<Expense[]>(() => {
@@ -10,6 +11,13 @@ export const useExpenses = () => {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         return JSON.parse(stored);
+      }
+      const prev = localStorage.getItem(PREV_KEY);
+      if (prev) {
+        const parsed: Expense[] = JSON.parse(prev);
+        const migrated = parsed.filter((e) => !e.date.startsWith('2023'));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
+        return migrated;
       }
     } catch (e) {
       console.error('Error reading localStorage', e);
