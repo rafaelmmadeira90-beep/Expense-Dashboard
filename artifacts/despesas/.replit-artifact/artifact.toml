@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Controle de Despesas"
+version = "1.0.0"
+id = "artifacts/despesas"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21985
+
+[services.development]
+run = "pnpm --filter @workspace/despesas run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/despesas", "run", "build" ]
+publicDir = "artifacts/despesas/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21985"
+BASE_PATH = "/"
