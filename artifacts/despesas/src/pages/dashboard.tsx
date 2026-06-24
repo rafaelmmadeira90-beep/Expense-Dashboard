@@ -31,7 +31,7 @@ export default function Dashboard() {
               <Wallet className="h-5 w-5" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-50">Controle de Despesas</h1>
+              <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-50">Controle Inteligente de Despesas</h1>
               <p className="text-sm text-slate-500 dark:text-slate-400">Gestão financeira pessoal eficiente e clara.</p>
             </div>
           </div>
